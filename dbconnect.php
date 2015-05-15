@@ -171,20 +171,9 @@ class DB
     function checkWord($word, $uID, $errors)
     {
         global $con;
-        if($errors==10)
+        if($errors>=10)
         {
-            $sql = "SELECT woord FROM `woorden` WHERE `uID` = '$uID'";
-            $result = $con->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $woord = $row["woord"];
-                }
-            }
-            else
-            {
-
-            }
-            $return .= 'Je hebt verloren, het woord was: '.$woord;
+            $return = 'Je hebt verloren, het woord was: '.$word;
             $bool = false;
         }
         else
