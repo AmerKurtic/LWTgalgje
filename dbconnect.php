@@ -171,6 +171,7 @@ class DB
     function checkWord($word, $uID, $errors)
     {
         global $con;
+        $win = false;
         if($errors>=10)
         {
             $return = 'Je hebt verloren, het woord was: '.$word;
@@ -178,7 +179,6 @@ class DB
         }
         else
         {
-            $win=false;
             $good_letters=0;
             $return = '';
             for ($i = 0; $i < strlen($word); $i++) {
@@ -195,6 +195,7 @@ class DB
             if($good_letters==strlen($word))
             {
                 $win=true;
+                $return = 'Je hebt gewonnen, het woord was: '.$word;
             }
         }
         return array($return,$bool,$win);

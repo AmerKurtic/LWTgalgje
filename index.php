@@ -61,6 +61,10 @@ foreach($alpha as $key => $value)
         echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:red; color:white;"/>';
 
     }
+    elseif($checkword[2])
+    {
+        echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:green; color:white;"/>';
+    }
     elseif($disabled !== false)
     {
         switch ($disabled){
