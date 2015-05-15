@@ -7,7 +7,7 @@ $alpha=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q'
 $uIP = $_SERVER["REMOTE_ADDR"];
 
 $db = new DB;
-$draw = new draw;
+$draw = new drawer;
 
 $uID = $db->getuID($uIP);
 $wID = "";
@@ -44,7 +44,9 @@ if(isset($_POST["letter"]))
     }
 }
 $checkFalse = $db->checkFaults($uID);
+echo '<canvas id="myCanvas" width="500" height="500"></canvas>';
 echo('<script>'.$draw->draw($checkFalse).'</script>');
+echo '<hr>';
 
 echo $db->checkWord($woord,$uID);
 echo "<hr>";

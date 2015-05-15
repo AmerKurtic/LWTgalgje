@@ -1,10 +1,6 @@
 <?php
-class draw
+class drawer
 {
-    public function __construct()
-    {
-        return '<canvas id="myCanvas" width="500" height="500"></canvas>';
-    }
     function draw($i)
     {
         $draw = '
@@ -25,7 +21,7 @@ class draw
             case 2:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(70, 100);
@@ -35,7 +31,7 @@ class draw
             case 3:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(100, 150);
@@ -45,7 +41,7 @@ class draw
             case 4:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 100);
@@ -55,7 +51,7 @@ class draw
             case 5:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             var x = 280;
@@ -71,7 +67,7 @@ class draw
             case 6:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 190);
@@ -81,7 +77,7 @@ class draw
             case 7:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 210);
@@ -91,7 +87,7 @@ class draw
             case 8:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 210);
@@ -101,7 +97,7 @@ class draw
             case 9:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 330);
@@ -111,7 +107,7 @@ class draw
             case 10:
                 for($count=1;$count<$i;$count++)
                 {
-                    $draw .= draw($count);
+                    $draw .= $this->draw($count);
                 }
                 $draw .= '
             context.moveTo(280, 330);

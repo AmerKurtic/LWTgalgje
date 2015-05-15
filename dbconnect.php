@@ -178,11 +178,11 @@ class DB
             $result = $con->query($sql);
             if ($result->num_rows > 0)
             {
-                    $return .= $word[$i];
+                    $return .= $word[$i] . " ";
             }
             else
             {
-                $return .= '_';
+                $return .= '_ ';
             }
         }
         return $return;
