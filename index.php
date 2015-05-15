@@ -2,7 +2,7 @@
 include("draw.php");
 include("dbconnect.php");
 
-$alpha=array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',);
+$alpha=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',);
 
 $uIP = $_SERVER["REMOTE_ADDR"];
 
@@ -25,13 +25,17 @@ if(isset($_POST["letter"]))
 {
     $guessedLetter = $_POST["letter"];
     $woord = $db->getWord($wID);
-    echo strpos($woord,$guessedLetter);
+    echo 'woord: '.$woord;
+    echo ' guessedLetter: '.$guessedLetter;
+    echo ' position: '. strpos($woord,$guessedLetter);
     if(strpos($woord,$guessedLetter) !== false)
     {
+        echo "1";
         $db->guessLetter($guessedLetter,$uID,'True');
     }
     else
     {
+        echo "2";
         $db->guessLetter($guessedLetter,$uID,'False');
     }
 }
