@@ -43,8 +43,8 @@ if(isset($_POST["letter"]))
         $db->guessLetter($guessedLetter,$uID,0);
     }
 }
-
-echo('<script>.$draw->draw(1).'</script>');
+$checkFalse = $db->checkFaults($uID);
+echo('<script>.$draw->draw($checkFalse).'</script>');
 
 echo $db->checkWord($woord,$uID);
 echo "<hr>";
