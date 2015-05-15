@@ -71,6 +71,23 @@ class DB
         }
     }
 
+    function getWord($wID)
+    {
+        global $con;
+        $sql = "SELECT `woord` from `woorden` WHERE `wID` = '$wID'";
+        $result = $con->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                return $row["woord"];
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+
     function checkGame($uID)
     {
         global $con;
@@ -100,14 +117,38 @@ class DB
         }
     }
 
-    function checkLetter($string)
+    function checkLetter($letter,$uID)
     {
         global $con;
-        $sql = "SELECT";
+        $sql = "SELECT `guessed` from `letters` WHERE `letter` = '$letter' AND `uID` = '$uID'";
+        $result = $con->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                return $row["guessed"];
+            }
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    function guessLetter($letter,$uID,$guessed)
+    {
+        global $con;
+        $sql = "INSERT INTO `letters` (`uID`,`letter`,`guessed`) VALUES ('$uID','$letter','$guessed')";
+        if($con->query($sql))
+        {   return true;
+        }
+        else
+        {
+            die("Connection error: ". $con->error);
+        }
     }
 
     function resetDB()
     {
+
     }
 
 }
