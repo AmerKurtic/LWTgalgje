@@ -192,7 +192,11 @@ class DB
                     $bool = true;
                 }
             }
+            if($good_letters==strlen($word))
+            {
+                $win=true;
+            }
         }
-        return array($return,$bool);
+        return array($return,$bool,$win);
     }
 }
