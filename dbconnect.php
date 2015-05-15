@@ -146,9 +146,18 @@ class DB
         }
     }
 
-    function resetDB()
+    function resetDB($uID)
     {
-
+        global $con;
+        $sql1 = 'DELETE FROM `letters` WHERE `uID` = '.$uID.';';
+        $sql2 = 'DELETE FROM `game` WHERE `uID` = '.$uID.';';
+        if($con->query($sql1)&&$con->query($sql2))
+        {   return true;
+        }
+        else
+        {
+            die("Connection error: ". $con->error);
+        }
     }
 
 }
