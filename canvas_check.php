@@ -116,7 +116,7 @@ function draw($i)
     return $draw;
 }
 $pagina = '';
-$pagina .= '<script>'.draw(10).'</script>';
+$pagina .= '<script>'.draw(8).'</script>';
 
 echo('<!DOCTYPE HTML>
 <html>
