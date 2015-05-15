@@ -168,10 +168,10 @@ class DB
         return $result->num_rows;
     }
 
-    function checkWord($word, $uID, $fouten)
+    function checkWord($word, $uID, $errors)
     {
         global $con;
-        if($fouten==10)
+        if($errors==10)
         {
             $sql = "SELECT woord FROM `woorden` WHERE `uID` = '$uID'";
             $result = $con->query($sql);
