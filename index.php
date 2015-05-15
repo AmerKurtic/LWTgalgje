@@ -45,9 +45,17 @@ echo '<form method="post">';
 foreach($alpha as $key => $value)
 {
     $disabled = $db->checkLetter($value,$uID);
-    if($disabled)
+    if($disabled !== false)
     {
-        echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled"/>';
+        switch ($disabled){
+            case 0:
+                echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:red; color:white;"/>';
+                break;
+            case 1:
+                echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:green; color:white;"/>';
+                break;
+        }
+
     }
     else
     {
