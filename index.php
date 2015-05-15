@@ -31,12 +31,12 @@ if(isset($_POST["letter"]))
     if(strpos($woord,$guessedLetter) !== false)
     {
         echo "1";
-        $db->guessLetter($guessedLetter,$uID,'True');
+        $db->guessLetter($guessedLetter,$uID,1);
     }
     else
     {
         echo "2";
-        $db->guessLetter($guessedLetter,$uID,'False');
+        $db->guessLetter($guessedLetter,$uID,0);
     }
 }
 

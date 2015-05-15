@@ -124,12 +124,12 @@ class DB
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                return $row["guessed"];
+                return true;
             }
         }
         else
         {
-            return 1;
+            return false;
         }
     }
 
