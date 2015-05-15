@@ -1,2 +1,9 @@
 <?php
-echo "test ";
+
+include("draw.php");
+include("dbconnect.php");
+
+
+
+
+?>
