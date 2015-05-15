@@ -113,7 +113,6 @@ function draw($i)
             context.stroke();';
             break;
     }
-
     return $draw;
 }
 $pagina = '';
