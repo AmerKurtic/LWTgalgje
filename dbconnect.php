@@ -163,7 +163,7 @@ class DB
     function checkFaults($uID)
     {
         global $con;
-        $sql = "SELECT `guessed` from `letters` WHERE `uID` = '$uID'";
+        $sql = "SELECT `guessed` from `letters` WHERE `uID` = '$uID' AND `guessed` = '0'";
         $result = $con->query($sql);
         return $result->num_rows;
     }
