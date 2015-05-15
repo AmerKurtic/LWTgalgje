@@ -2,7 +2,7 @@
 include("draw.php");
 include("dbconnect.php");
 
-$alpha=array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',);
+$alpha=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',);
 
 $uIP = $_SERVER["REMOTE_ADDR"];
 
@@ -25,14 +25,18 @@ if(isset($_POST["letter"]))
 {
     $guessedLetter = $_POST["letter"];
     $woord = $db->getWord($wID);
-    echo strpos($woord,$guessedLetter);
+    echo 'woord: '.$woord;
+    echo ' guessedLetter: '.$guessedLetter;
+    echo ' position: '. strpos($woord,$guessedLetter);
     if(strpos($woord,$guessedLetter) !== false)
     {
-        $db->guessLetter($guessedLetter,$uID,'True');
+        echo "1";
+        $db->guessLetter($guessedLetter,$uID,1);
     }
     else
     {
-        $db->guessLetter($guessedLetter,$uID,'False');
+        echo "2";
+        $db->guessLetter($guessedLetter,$uID,0);
     }
 }
 
@@ -41,9 +45,17 @@ echo '<form method="post">';
 foreach($alpha as $key => $value)
 {
     $disabled = $db->checkLetter($value,$uID);
-    if($disabled == 0)
+    if($disabled !== false)
     {
-        echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled"/>';
+        switch ($disabled){
+            case 0:
+                echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:red; color:white;"/>';
+                break;
+            case 1:
+                echo'<input type="submit" name="letter" value="'.$value.'" disabled = "disabled" style="background:green; color:white;"/>';
+                break;
+        }
+
     }
     else
     {

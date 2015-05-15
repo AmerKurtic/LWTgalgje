@@ -129,7 +129,7 @@ class DB
         }
         else
         {
-            return 1;
+            return false;
         }
     }
 
