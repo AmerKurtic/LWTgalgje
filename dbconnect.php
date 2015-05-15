@@ -186,7 +186,7 @@ class DB
                 $result = $con->query($sql);
                 if ($result->num_rows > 0) {
                     $return .= $word[$i] . " ";
-                    $good_letters
+                    $good_letters++;
                 } else {
                     $return .= '_ ';
                     $bool = true;
