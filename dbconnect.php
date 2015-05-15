@@ -159,6 +159,15 @@ class DB
             die("Connection error: ". $con->error);
         }
     }
+
+    function checkFaults($uID)
+    {
+        global $con;
+        $sql = "SELECT `guessed` from `letters` WHERE `uID` = '$uID'";
+        $result = $con->query($sql);
+        return $result->num_rows;
+    }
+
     function checkWord($word, $uID)
     {
         global $con;
