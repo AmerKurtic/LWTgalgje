@@ -48,12 +48,18 @@ echo '<canvas id="myCanvas" width="500" height="500"></canvas>';
 echo('<script>'.$draw->draw($checkFalse).'</script>');
 echo '<hr>';
 
-echo $db->checkWord($woord,$uID,$checkFalse)[0];
+$checkword = $db->checkWord($woord,$uID,$checkFalse);
+echo $checkword[0];
 echo "<hr>";
 echo '<form method="post">';
 foreach($alpha as $key => $value)
 {
     $disabled = $db->checkLetter($value,$uID);
+
+    if(!$checkword[1])
+    {
+        $disabled == true;
+    }
     if($disabled !== false)
     {
         switch ($disabled){
