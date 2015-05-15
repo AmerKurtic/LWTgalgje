@@ -172,6 +172,7 @@ class DB
     {
         global $con;
         $win = false;
+        $bool = true;
         if($errors>=10)
         {
             $return = 'Je hebt verloren, het woord was: '.$word;
@@ -194,6 +195,7 @@ class DB
             }
             if($good_letters==strlen($word))
             {
+
                 $win=true;
                 $return = 'Je hebt gewonnen, het woord was: '.$word;
             }
