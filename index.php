@@ -44,7 +44,7 @@ if(isset($_POST["letter"]))
     }
 }
 
-echo($draw->draw(1));
+echo('<script>.$draw->draw(1).'</script>');
 
 echo $db->checkWord($woord,$uID);
 echo "<hr>";
