@@ -14,25 +14,31 @@ if($con->connect_error)
     die("Connection failed: " . $con->connect_error);
 }
 
-$sql = "SELECT `woord` from `woorden` WHERE `wID` = '1'";
-$result = $con->query($sql);
-
-if($result->num_rows > 0)
+function getRandomWord()
 {
-    while($row = $result->fetch_assoc())
+    global $con;
+    $sql = "SELECT `woord` from `woorden` ORDER BY RAND() LIMIT 1";
+    $result = $con->query($sql);
+
+    if($result->num_rows > 0)
     {
-        echo "woord: ". $row["woord"];
+        while($row = $result->fetch_assoc())
+        {
+            return $row["woord"];
+        }
     }
 }
 
-function getRandomWord()
-{}
+function getuID($ip)
+{
 
-function checkLetter()
-{}
+}
 
-function addLetter()
-{}
+function checkLetter($string)
+{
+    global $con;
+    $sql = "SELECT";
+}
 
 function resetDB()
 {}
