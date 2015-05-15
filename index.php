@@ -44,7 +44,7 @@ if(isset($_POST["letter"]))
     }
 }
 $checkFalse = $db->checkFaults($uID);
-echo('<script>.$draw->draw($checkFalse).'</script>');
+echo('<script>'.$draw->draw($checkFalse).'</script>');
 
 echo $db->checkWord($woord,$uID);
 echo "<hr>";
