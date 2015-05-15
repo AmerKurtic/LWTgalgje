@@ -159,22 +159,23 @@ class DB
             die("Connection error: ". $con->error);
         }
     }
-    function check_Word($word, $uID)
+    function checkWord($word, $uID)
     {
         global $con;
         $return='';
-        for($i=0;$i<count($word);$i++)
+        for($i=0;$i<strlen($word);$i++)
         {
-            $sql = 'SELECT `$word[$i]` FROM `letters` WHERE `uID` = '.$uID.';';
+            $sql = "SELECT * FROM `letters` WHERE `uID` = '$uID' AND `letter` = '".$word[$i]."'";
             $result = $con->query($sql);
             if ($result->num_rows > 0)
             {
-                $return .= $word[$i];
+                    $return .= $word[$i];
             }
             else
             {
                 $return .= '_';
             }
         }
+        return $return;
     }
 }

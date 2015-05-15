@@ -11,6 +11,11 @@ $db = new DB;
 $uID = $db->getuID($uIP);
 $wID = "";
 
+if(isset($_POST["reset"]))
+{
+    $db->resetDB($uID);
+}
+
 if($db->checkGame($uID))
 {
     $wID = $db->getGameWID($uID);
@@ -21,26 +26,25 @@ else
     $db->newGame($uID,$wID);
 }
 
+$woord = $db->getWord($wID);
+
+
+
 if(isset($_POST["letter"]))
 {
     $guessedLetter = $_POST["letter"];
-    $woord = $db->getWord($wID);
-    echo 'woord: '.$woord;
-    echo ' guessedLetter: '.$guessedLetter;
-    echo ' position: '. strpos($woord,$guessedLetter);
     if(strpos($woord,$guessedLetter) !== false)
     {
-        echo "1";
         $db->guessLetter($guessedLetter,$uID,1);
     }
     else
     {
-        echo "2";
         $db->guessLetter($guessedLetter,$uID,0);
     }
 }
 
-
+echo $db->checkWord($woord,$uID);
+echo "<hr>";
 echo '<form method="post">';
 foreach($alpha as $key => $value)
 {
@@ -63,6 +67,7 @@ foreach($alpha as $key => $value)
     }
 
 }
+echo '<hr><input type="submit" name="reset" value="New Game">';
 echo '</form>';
 
 ?>
