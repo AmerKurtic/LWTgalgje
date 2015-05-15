@@ -104,7 +104,7 @@ class drawer
             context.lineTo(220, 380);
             context.stroke();';
                 break;
-            default:
+            case 10:
                 for($count=1;$count<$i;$count++)
                 {
                     $draw .= $this->draw($count);
@@ -113,6 +113,12 @@ class drawer
             context.moveTo(280, 330);
             context.lineTo(340, 380);
             context.stroke();';
+                break;
+            default:
+                $draw = '
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        context.beginPath();';
 
         }
         return $draw;

@@ -178,12 +178,15 @@ class DB
         }
         else
         {
+            $win=false;
+            $good_letters=0;
             $return = '';
             for ($i = 0; $i < strlen($word); $i++) {
                 $sql = "SELECT * FROM `letters` WHERE `uID` = '$uID' AND `letter` = '" . $word[$i] . "'";
                 $result = $con->query($sql);
                 if ($result->num_rows > 0) {
                     $return .= $word[$i] . " ";
+                    $good_letters
                 } else {
                     $return .= '_ ';
                     $bool = true;
