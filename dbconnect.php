@@ -168,23 +168,39 @@ class DB
         return $result->num_rows;
     }
 
-    function checkWord($word, $uID)
+    function checkWord($word, $uID, $fouten)
     {
         global $con;
-        $return='';
-        for($i=0;$i<strlen($word);$i++)
+        if($fouten==10)
         {
-            $sql = "SELECT * FROM `letters` WHERE `uID` = '$uID' AND `letter` = '".$word[$i]."'";
+            $sql = "SELECT woord FROM `woorden` WHERE `uID` = '$uID'";
             $result = $con->query($sql);
-            if ($result->num_rows > 0)
-            {
-                    $return .= $word[$i] . " ";
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $woord = $row["woord"];
+                }
             }
             else
             {
-                $return .= '_ ';
+
+            }
+            $return .= 'Je hebt verloren, het woord was: '.$woord;
+            $bool = false;
+        }
+        else
+        {
+            $return = '';
+            for ($i = 0; $i < strlen($word); $i++) {
+                $sql = "SELECT * FROM `letters` WHERE `uID` = '$uID' AND `letter` = '" . $word[$i] . "'";
+                $result = $con->query($sql);
+                if ($result->num_rows > 0) {
+                    $return .= $word[$i] . " ";
+                } else {
+                    $return .= '_ ';
+                    $bool = true;
+                }
             }
         }
-        return $return;
+        return array($return,$bool);
     }
 }

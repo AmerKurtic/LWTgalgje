@@ -48,7 +48,7 @@ echo '<canvas id="myCanvas" width="500" height="500"></canvas>';
 echo('<script>'.$draw->draw($checkFalse).'</script>');
 echo '<hr>';
 
-echo $db->checkWord($woord,$uID);
+echo $db->checkWord($woord,$uID,$checkFalse)[0];
 echo "<hr>";
 echo '<form method="post">';
 foreach($alpha as $key => $value)
